@@ -1,14 +1,15 @@
 package com.quicktutorialz.learnmicroservices.FirstToDos.services;
 
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.util.Map;
+import java.util.Optional;
+
 import com.quicktutorialz.learnmicroservices.FirstToDos.entities.User;
 import com.quicktutorialz.learnmicroservices.FirstToDos.utilities.UserNotInDatabaseException;
 import com.quicktutorialz.learnmicroservices.FirstToDos.utilities.UserNotLoggedException;
 
-import java.io.UnsupportedEncodingException;
-import java.net.http.HttpRequest;
-import java.util.Date;
-import java.util.Map;
-import java.util.Optional;
+import io.vertx.ext.web.RoutingContext;
 
 public interface LoginService {
 
@@ -16,5 +17,5 @@ public interface LoginService {
 
     String createJwt(String email, String name, Date date) throws UnsupportedEncodingException;
 
-    Map<String, Object> verifyJwtAndGetData(jakarta.servlet.http.HttpServletRequest request)throws UnsupportedEncodingException, UserNotLoggedException; //ExpiredJwtException;
+    //Map<String, Object> verifyJwtAndGetData(RoutingContext request)throws UnsupportedEncodingException, UserNotLoggedException; //ExpiredJwtException;
 }

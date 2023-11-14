@@ -1,25 +1,24 @@
 package com.quicktutorialz.learnmicroservices.FirstToDos.services;
 
-import com.quicktutorialz.learnmicroservices.FirstToDos.daos.ToDoDao;
-import com.quicktutorialz.learnmicroservices.FirstToDos.entities.ToDo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 
-@Service
+import com.quicktutorialz.learnmicroservices.FirstToDos.daos.ToDoDao;
+import com.quicktutorialz.learnmicroservices.FirstToDos.entities.ToDo;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+
+@ApplicationScoped
 public class ToDoServiceImpl implements ToDoService{
 
-
-    @Autowired
+    @Inject
     ToDoDao toDoDao;
 
 
-    @Override
+    @Inject
     public List<ToDo> getToDos(String email){
         return toDoDao.findByFkUser(email);
     }
-
 
 
     @Override

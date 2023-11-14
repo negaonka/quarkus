@@ -1,13 +1,18 @@
 package com.quicktutorialz.learnmicroservices.FirstToDos.daos;
 
-import com.quicktutorialz.learnmicroservices.FirstToDos.entities.ToDo;
-import org.springframework.data.jpa.repository.JpaRepository;
-
 import java.util.List;
 
-public interface ToDoDao extends JpaRepository<ToDo, Integer> {
+import com.quicktutorialz.learnmicroservices.FirstToDos.entities.ToDo;
 
-    //name strategy
+import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import jakarta.persistence.Entity;
+
+@Entity
+public interface ToDoDao extends PanacheRepository<String> {
+
     List<ToDo> findByFkUser(String email);
+
+	ToDo save(ToDo toDo);
+
 
 }
